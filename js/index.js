@@ -5,7 +5,7 @@ $(function () {
         dataType: 'json',
         async: false,
         success: function (data) {
-            var str = ''
+            var str = '';
             for (var i = 0; i < data.length; i++) {
                 str += '<div class="s-title">'
                 str += '<h3 class="fl">' + data[i].title.city + '</h3>'
@@ -13,27 +13,29 @@ $(function () {
                 str += '</div>'
 
                 if (data[i].type === 1) {
-                str+='<div class="s-content1">'
-                    str+='<div class="s-div">'
-                    str+='<img src="'+data[i].goods[0].img+'" alt="">'
-                    str+='</div>'
-                    str+='<div class="clearfix s-text">'
-                    str+='<div class="s-left clearfix fl">'
-                    str+='<span class="text1">'+data[i].goods[0].bq[0].name+'</span>'
-                    str+='<span class="text2">'+data[i].goods[0].bq[1].name+'</span>'
-                    str+='<p>'+data[i].goods[0].title+'</p>'
-                    str+='</div>'
-                    str+='<div class="s-right fr">'
-                    str+='<s>原价：RMB '+data[i].goods[0].yj+'/位</s>'
-                    str+='<br>'
-                    str+='<i>挑食价：RMB '+data[i].goods[0].xj+'/位</i>'
-                    str+='</div>'
-                    str+='</div>'
-                    str+='<div class="s-bottom">'
-                    str+='<i class="icon"></i>'
-                    str+='<span>'+data[i].goods[0].jd+'</span>'
-                    str+='</div>'
-                    str+='</div>'
+                    for(var u=0;u<data[i].goods.length;u++){
+                        str+='<div class="s-content1">'
+                        str+='<div class="s-div">'
+                        str+='<img src="'+data[i].goods[u].img+'" alt="">'
+                        str+='</div>'
+                        str+='<div class="clearfix s-text">'
+                        str+='<div class="s-left clearfix fl">'
+                        str+='<span class="text1">'+data[i].goods[u].bq[0].name+'</span>'
+                        str+='<span class="text2">'+data[i].goods[u].bq[1].name+'</span>'
+                        str+='<p>'+data[i].goods[u].title+'</p>'
+                        str+='</div>'
+                        str+='<div class="s-right fr">'
+                        str+='<s>原价：RMB '+data[i].goods[u].yj+'/位</s>'
+                        str+='<br>'
+                        str+='<i>挑食价：RMB '+data[i].goods[u].xj+'/位</i>'
+                        str+='</div>'
+                        str+='</div>'
+                        str+='<div class="s-bottom">'
+                        str+='<i class="icon"></i>'
+                        str+='<span>'+data[i].goods[u].jd+'</span>'
+                        str+='</div>'
+                        str+='</div>'
+                    }
                 } else if (data[i].type === 2) {
                 str+='<div class="s-content2 clearfix">'
                     str+='<!--左-->'
@@ -125,7 +127,7 @@ $(function () {
                     str+='</div>'
                 }
             }
-            $('.shs').html(str)
+            $('.s').html(str)
         }
     })
     $.ajax({
